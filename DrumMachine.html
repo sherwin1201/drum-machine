@@ -1,0 +1,201 @@
+<html>
+
+<head>
+	<title>Drum Machine</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+	<link href="./DrumMachine.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<div id="drum-machine">
+<div id="drum-set">
+<button class="drum-pad" id="hi-hat-closed" onclick="playAudio(this)" accesskey="q">
+	<div class="drum-key">Q</div>
+	<img id="hi-hat-closed-img" class="drum-part" src="./parts/Hi-Hat-Closed.png" alt="High Hat Closed"/>
+	<audio class="clip" id="Q" src="./sfx/Hi-Hat-Closed.mp3">
+	</audio>
+</button>
+
+<button class="drum-pad" id="crash-cymbal" onclick="playAudio(this)" accesskey="w">
+	<div class="drum-key">W</div>
+	<img id="crash-cymbal-img" class="drum-part" src="./parts/Cymbal.png" alt="Crash Cymbal"/>
+	<img id="crash-cymbal-stand" class="drum-stands" src="./parts/Cymbal-Stand.png" alt="Crash Symbal Stand"/>
+	<audio class="clip" id="W" src="./sfx/Crash-Cymbal.mp3">
+	</audio>
+</button>
+
+<button class="drum-pad" id="ride-cymbal" onclick="playAudio(this)" accesskey="e">
+	<div class="drum-key">E</div>
+	<img id="ride-cymbal-img" class="drum-part" src="./parts/Cymbal.png" alt="Ride Cymbal"/>
+	<img id="ride-cymbal-stand" class="drum-stands" src="./parts/Cymbal-Stand.png" alt="Ride Cymbal Stand"/>
+	<audio class="clip" id="E" src="./sfx/Ride-Cymbal.mp3">
+	</audio>
+</button>
+
+<button class="drum-pad" id="hi-hat-open" onclick="playAudio(this)" accesskey="a">
+	<div class="drum-key">A</div>
+	<img id="hi-hat-open-img" class="drum-part" src="./parts/Hi-Hat-Open.png" alt="Hi Hat Open"/>
+	<img id="hi-hat-open-stand" class="drum-stands" src="./parts/Hi-Hat-Stand.png" alt="High Hat Stand"/>	
+	<audio class="clip" id="A" src="./sfx/Hi-Hat-Open.mp3">
+	</audio>
+</button>
+
+<button class="drum-pad" id="medium-tom" onclick="playAudio(this)" accesskey="s">
+	<div class="drum-key">S</div>
+	<img id="medium-tom-img" class="drum-part" src="./parts/Tom-Drum.png" alt="Medium Tom Drum"/>
+	<img id="medium-tom-stand" class="drum-stands" src="./parts/Tom-Stand.png" alt="Medium Tom Stand"/>
+	<audio class="clip" id="S" src="./sfx/Medium-Tom-Drum.mp3">
+	</audio>
+</button>
+
+<button class="drum-pad" id="small-tom" onclick="playAudio(this)" accesskey="d">
+	<div class="drum-key">D</div>
+	<img id="small-tom-img" class="drum-part" src="./parts/Tom-Drum.png" alt="Small Tom Drum"/>
+	<img id="small-tom-stand" class="drum-stands" src="./parts/Tom-Stand.png" alt="Small Tom Stand"/>
+	<audio class="clip" id="D" src="./sfx/Small-Tom-Drum.mp3">
+	</audio>
+</button>
+
+
+<button class="drum-pad" id="snare-drum" onclick="playAudio(this)" accesskey="z">
+	<div class="drum-key">Z</div>
+	<img id="snare-drum-img" class="drum-part" src="./parts/Snare-Drum.png" alt="Snare-Drum"/>
+	<img id="snare-drum-stand" class="drum-stands" src="./parts/Snare-Drum-Stand.png" alt="Snare Drum Stand"/>
+	<audio class="clip" id="Z" src="./sfx/Snare-Drum.mp3">
+	</audio>
+</button>
+
+<button class="drum-pad" id="bass-drum" onclick="playAudio(this)" accesskey="x">
+	<div class="drum-key">X</div>
+	<img id="bass-drum-img" class="drum-part" src="./parts/Bass-Drum.png" alt="Bass Drum"/>
+	<audio class="clip" id="X" src="./sfx/Bass-Drum.mp3">
+	</audio>
+</button>
+
+
+<button class="drum-pad" id="floor-tom" onclick="playAudio(this)" accesskey="c">
+	<div class="drum-key">C</div>
+	<img id="floor-tom-img" class="drum-part" src="./parts/Floor-Tom.png" alt="Floor Tom"/>
+	<audio class="clip" id="C" src="./sfx/Floor-Tom-Drum.mp3">
+	</audio>
+</button>
+</div>
+
+<div id="display">
+	<label class="labels" id="power-label">Power:</label><input id="power" checked type="checkbox" data-toggle="toggle"></br>
+	<p id="display-text"></p>
+	<label class="labels" id="volume-label">Volume:</label> <input type="range" min="0" max="100"  id="volume" class="slider" title="Volume"/>
+	<span id="volume-percentage"></span>
+</div>
+
+<button id="help-btn" title="Help">
+	<i class="fa fa-question fa-2x"/></i>
+</button>
+</div>
+
+<div id="help">
+	<table>
+		<th class="cells">Key</th><th class="cells">Drum</th>
+		<tr><td class="cells">Q</td><td class="cells">Hi Hat Closed</td></tr>
+		<tr><td class="cells">W</td><td class="cells">Crash Cymbal</td></tr>
+		<tr><td class="cells">E</td><td class="cells">Ride Cymbal</td></tr>
+		<tr><td class="cells">A</td><td class="cells">Hi Hat Open</td></tr>
+		<tr><td class="cells">S</td><td class="cells">Medium Tom</td></tr>
+		<tr><td class="cells">D</td><td class="cells">Small Tom</td></tr>
+		<tr><td class="cells">Z</td><td class="cells">Snare Drum</td></tr>
+		<tr><td class="cells">X</td><td class="cells">Bass Drum</td></tr>
+		<tr><td class="cells">C</td><td class="cells">Floor Tom</td></tr>
+	</table>
+	<button id="exit" class="btn btn-default">Got It!</button>
+</div>
+
+<script>
+	$(document).ready(function(){
+		if($("#power").is(":checked")){
+			//$("#drum-set").removeClass("opaque-drums");
+			//$(".drum-pad").prop("disabled", false);
+		}
+		else{
+			$("#drum-set").addClass("opaque-drums");
+			$(".drum-pad").prop("disabled", true);
+			$("#display-text").text("");
+	}
+		
+		var volumeLevel = Math.round(($("audio").prop("volume"))*100)/2;
+		$("audio").prop("volume",(volumeLevel/100))
+		$("#volume").prop("value", volumeLevel)
+		console.log(volumeLevel);
+		$("#volume-percentage").text(volumeLevel+"%")
+		
+		$("#help").prop("hidden", true);
+	});
+	
+	$("#drum-machine").on("keydown", function(event){
+	let key = String.fromCharCode(event.keyCode);
+	//console.log(key);
+		let audioElem = $(".drum-pad").find('#'+key);
+		//console.log(audioElem);
+		if(audioElem){
+			let parent = audioElem.parent();
+			parent.on("click", playAudio(parent))
+		}
+	}
+	);
+	
+	$("#power").on("change", function(event){
+		if(event.target.checked){
+			$("#drum-set").removeClass("opaque-drums");
+			$(".drum-pad").prop("disabled", false);
+		}
+		else{
+			$("#drum-set").addClass("opaque-drums");
+			$(".drum-pad").prop("disabled", true);
+			$("#display-text").text("");
+	}});
+	
+	$("#volume").on("input", function(event){
+		let vol = event.target.value/100;
+		console.log(vol);
+		$('.clip').prop("volume",vol);
+		var volumeLevel = Math.round(($("audio").prop("volume"))*100);
+		$("#volume-percentage").text(volumeLevel+"%");
+	});
+	
+	function playAudio(elem){
+		let audio = $(elem).find("audio")[0];
+		//console.log(audio.currentTime);
+		audio.play();
+		let displayText = $(elem).find("img").attr("alt");
+		$("#display-text").text(displayText);
+		if(audio.currentTime > 0.01){
+			//audio.pause();
+			audio.currentTime = 0;
+		}
+	}
+	
+	$("#help-btn").on("click", function(){
+		$("#help").prop("hidden", false);
+		$(".drum-pad").prop("disabled", true);
+		$("#volume").prop("disabled", true);
+		$("#volume").prop("disabled", true);
+		$("#drum-machine").css("opacity", "0.2");
+	});
+	
+	$("#exit").on("click", function(){
+		$("#help").prop("hidden", true);
+		$(".drum-pad").prop("disabled", false);
+		$("#volume").prop("disabled", false);
+		$("#drum-machine").css("opacity", "1");
+	});
+</script>
+</body>
+
+</html>
